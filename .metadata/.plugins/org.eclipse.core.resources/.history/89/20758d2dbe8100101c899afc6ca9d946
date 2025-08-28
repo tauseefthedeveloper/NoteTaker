@@ -1,0 +1,10 @@
+package com.mappings;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Questions {
+	private int id;
+	private String question;
+	private
+}

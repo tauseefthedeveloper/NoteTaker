@@ -1,0 +1,7 @@
+package com.mappings;
+
+public class Answers {
+	private int id;
+	private String answer;
+	
+}

@@ -1,0 +1,21 @@
+package com.mappings;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.cfg.Configuration;
+
+public class FetchTypeDemo {
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		SessionFactory factory=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		
+		Questions q=session.get(Questions.class, 101);
+		System.out.println(q.getId());
+		System.out.println(q.getQuestion());
+		System.out.println(q.getAnswer().size());
+		factory.close();
+		session.close();
+	}
+}

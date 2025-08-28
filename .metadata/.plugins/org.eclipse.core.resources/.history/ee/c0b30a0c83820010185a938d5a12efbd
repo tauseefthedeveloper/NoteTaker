@@ -1,0 +1,31 @@
+package com.tut;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class StateDemo {
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		SessionFactory factory=cfg.buildSessionFactory();
+		
+		Student s1=new Student();
+		s1.setId(103);
+		s1.setName("Ammar");
+		s1.setCity("Mumbai");
+		s1.setCerti(new Certificate("ReactJS","3 months"));
+		//s1 : Transient state
+		
+		Session session=factory.openSession();
+		Transaction tx=session.beginTransaction();
+		session.save(s1);
+		//s1 : Persistant state-session ,database
+		tx.commit();
+		
+		
+		factory.close();
+		session.close();
+	}
+}

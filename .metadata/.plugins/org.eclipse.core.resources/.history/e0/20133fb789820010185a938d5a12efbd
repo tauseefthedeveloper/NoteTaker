@@ -1,0 +1,11 @@
+package com.helper;
+
+import com.mysql.cj.xdevapi.SessionFactory;
+
+public class FactoryProvider {
+	public static SessionFactory factory;
+	public static SessionFactory getFactory() {
+		
+		return factory;
+	}
+}

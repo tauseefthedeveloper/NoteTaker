@@ -1,0 +1,52 @@
+package com.mappings;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Answers {
+	@Id
+	@Column(name="answer_id")
+	private int id;
+	private String answer;
+	@OneToOne(mappedBy="answers")
+	private Questions ques;
+	
+	public Answers(int id, String answer, Questions ques) {
+		super();
+		this.id = id;
+		this.answer = answer;
+		this.ques = ques;
+	}
+	public Questions getQues() {
+		return ques;
+	}
+	public void setQues(Questions ques) {
+		this.ques = ques;
+	}
+	public Answers() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public Answers(int id, String answer) {
+		super();
+		this.id = id;
+		this.answer = answer;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
+	public String getAnswer() {
+		return answer;
+	}
+	public void setAnswer(String answer) {
+		this.answer = answer;
+	}
+	
+	
+}

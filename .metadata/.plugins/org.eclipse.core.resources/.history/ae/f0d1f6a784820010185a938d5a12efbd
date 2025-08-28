@@ -1,0 +1,39 @@
+package com.tut;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class StateDemo {
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		SessionFactory factory=cfg.buildSessionFactory();
+		
+//		Student s1=new Student();
+//		s1.setId(103);
+//		s1.setName("Ammar");
+//		s1.setCity("Mumbai");
+//		s1.setCerti(new Certificate("ReactJS","3 months"));
+		//s1 : 1.Transient state
+		
+		Session session=factory.openSession();
+		Transaction tx=session.beginTransaction();
+//		session.save(s1);
+		//s1 : 2.Persistant state => session ,database
+		
+//		s1.setName("Waheed");
+//		tx.commit();
+//		session.close();
+//		s1.setName("Ahmad");
+		//s1 : 3.Detached state => remove from session but stored in database
+		
+		Student newStud=(Student)session.get(Student.class,104);
+		session.delete(newStud);
+		//newStud : 4.Removed State => delete from database but associated in session
+		tx.commit();
+		session.close();
+		factory.close();
+	}
+}

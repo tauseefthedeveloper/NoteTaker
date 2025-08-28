@@ -1,0 +1,11 @@
+package com.mappings;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+@Entity
+public class Answers {
+	@Id
+	private int id;
+	private String answer;
+	
+}

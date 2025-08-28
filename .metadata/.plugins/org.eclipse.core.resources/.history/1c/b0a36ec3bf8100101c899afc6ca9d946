@@ -1,0 +1,33 @@
+package com.mappings;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class OneToOneMap {
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		SessionFactory factory=cfg.buildSessionFactory();
+		
+		//creating object Qustions
+		Questions qus=new Questions();
+		qus.setId(101);
+		qus.setQuestion("What is java?");
+		
+		//creating object Anwer
+		Answers ans=new Answers();
+		ans.setId(201);
+		ans.setAnswer("Java is a programming language.");
+		
+		qus.setAnswer(ans);
+		
+		Session session=factory.openSession();
+		Transaction tx=session.beginTransaction();
+		tx.save(qus);
+		tx.commit();
+		factory.close();
+		session.close();
+	}
+}

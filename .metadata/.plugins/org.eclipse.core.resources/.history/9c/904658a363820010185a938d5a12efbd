@@ -1,0 +1,6 @@
+package com.mappings1;
+
+public class Employee {
+	private int e_id;
+	private String e_name;
+}

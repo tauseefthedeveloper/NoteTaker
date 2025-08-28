@@ -1,0 +1,19 @@
+package com.mappings1;
+
+import java.util.List;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+
+@Entity
+public class Project {
+	@Id
+	private int p_id;
+	@Column(name="project_name")
+	private String p_name;
+	@ManyToMany
+	private List<Employee> employee;
+	
+}

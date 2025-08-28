@@ -1,0 +1,53 @@
+package com.mappings;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class OneToManyMap {
+	public static void main(String[] args) {
+		Configuration cfg = new Configuration();
+		cfg.configure();
+		SessionFactory factory = cfg.buildSessionFactory();
+		Session session = factory.openSession();
+
+//		Questions ques = new Questions();
+//		ques.setId(101);
+//		ques.setQuestion("What is java");
+//
+//		Answers ans = new Answers();
+//		ans.setId(201);
+//		ans.setAnswer("Java is a programming language.");
+//		ans.setQues(ques);
+//
+//		Answers ans2 = new Answers();
+//		ans2.setId(202);
+//		ans2.setAnswer("Java has many frameworks that is used to create software's.");
+//		ans2.setQues(ques);
+//
+//		List<Answers> answers = new ArrayList<>();
+//		answers.add(ans);
+//		answers.add(ans2);
+//		ques.setAnswer(answers);
+
+//		Transaction tx = session.beginTransaction();
+//		session.save(ques);
+//		session.save(ans);
+//		session.save(ans2);
+//		tx.commit();
+
+		// fetching objects
+		Questions newQeus = (Questions) session.get(Questions.class, 101);
+		System.out.println(newQeus.getQuestion());
+		for(Answers a:newQeus.getAnswer()) {
+			System.out.println(a);
+		}
+		session.close();
+		factory.close();
+
+	}
+}

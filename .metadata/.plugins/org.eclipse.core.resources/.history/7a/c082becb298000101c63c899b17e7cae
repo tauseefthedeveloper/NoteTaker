@@ -1,0 +1,7 @@
+package com.tut;
+
+public class FetchDemo {
+	public static void main(String arg[]) {
+		//get , load method in fetching object in Hibernate
+	}
+}

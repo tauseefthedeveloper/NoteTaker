@@ -1,0 +1,12 @@
+package com.tut;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Address {
+	private int Id;
+	private String street;
+	private String city;
+	private boolean isOpen;
+	private double x;
+}

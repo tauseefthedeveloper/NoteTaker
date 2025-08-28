@@ -1,0 +1,19 @@
+package com.tut;
+
+import java.sql.Date;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Address {
+	private int Id;
+	private String street;
+	private String city;
+	private boolean isOpen;
+	private double x;
+	private Date addedDate;
+	private byte[] image;
+	public Address() {
+		
+	}
+}

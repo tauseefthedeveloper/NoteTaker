@@ -1,0 +1,35 @@
+package com.mappings1;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class ManyToManyDemo {
+	public static void main(String[] args) {
+		Configuration cfg=new Configuration();
+		cfg.configure();
+		SessionFactory factory=cfg.buildSessionFactory();
+		Session session=factory.openSession();
+		Transaction tx=session.beginTransaction();
+		
+		Employee emp1=new Employee();
+		Employee emp2=new Employee();
+		emp1.setE_id(1);
+		emp1.setE_name("Tauseef Ahmad");
+		emp2.setE_id(2);
+		emp2.setE_name("Ammar Ansari");
+		
+		Project pro1=new Project();
+		Project pro2=new Project();
+		pro1.setP_id(11);
+		pro1.setP_name("Bank System");
+		pro2.setP_id(12);
+		pro2.setP_name("E-district portal");
+		
+		List l1=new ArrayList();
+		session.close();
+		tx.commit();
+		factory.close();
+	}
+}

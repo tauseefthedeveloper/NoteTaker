@@ -1,0 +1,11 @@
+package com.mappings1;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Employee {
+	@Id
+	private int e_id;
+	private String e_name;
+}

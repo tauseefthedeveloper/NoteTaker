@@ -1,0 +1,46 @@
+package com.mappings;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
+import org.hibernate.cfg.Configuration;
+
+public class OneToOneMap {
+	public static void main(String[] args) {
+		Configuration cfg = new Configuration();
+		cfg.configure();
+		SessionFactory factory = cfg.buildSessionFactory();
+
+		// creating object Qustions
+		Questions qus = new Questions();
+		qus.setId(101);
+		qus.setQuestion("What is java?");
+
+		// creating object Anwer
+		Answers ans = new Answers();
+		ans.setId(201);
+		ans.setAnswer("Java is a programming language.");
+
+		qus.setAnswer(ans);
+
+		// creating object Qustions
+		Questions qus2 = new Questions();
+		qus2.setId(102);
+		qus2.setQuestion("What is Collection Framework?");
+
+		// creating object Anwer
+		Answers ans2 = new Answers();
+		ans2.setId(202);
+		ans2.setAnswer("Collection framework is set api for managing objects.");
+
+		qus2.setAnswer(ans2);
+
+		Session session = factory.openSession();
+		Transaction tx = session.beginTransaction();
+		session.save(qus);
+		session.save(qus2);
+		tx.commit();
+		factory.close();
+		session.close();
+	}
+}
